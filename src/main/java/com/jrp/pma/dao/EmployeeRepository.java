@@ -1,6 +1,7 @@
 package com.jrp.pma.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -12,6 +13,12 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
 	@Override
 	public List<Employee> findAll();
+	
+	@Override
+	public Optional<Employee> findById(Long id);
+	
+	@Override
+	public void deleteById(Long id);
 	
 	@Query(nativeQuery=true, value="SELECT e.first_name as firstName, e.last_name as lastName, "
 			+ "COUNT(pe.employee_id) as projectCount FROM employee e LEFT JOIN project_employee pe "

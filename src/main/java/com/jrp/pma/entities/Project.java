@@ -7,12 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
@@ -27,11 +29,13 @@ public class Project {
 	private String stage;
 	private String description;
 	
+	
 	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, 
 			fetch=FetchType.LAZY)
 	@JoinTable(name="project_employee",
 			joinColumns=@JoinColumn(name="project_id"),
 			inverseJoinColumns=@JoinColumn(name="employee_id"))
+	@JsonIgnore
 	private List<Employee> employees;
 	
 	public Project() {

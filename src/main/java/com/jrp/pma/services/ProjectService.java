@@ -1,6 +1,7 @@
 package com.jrp.pma.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,16 @@ public class ProjectService {
 		return projRepo.findAll(); 
 	}
 	
+	public Optional<Project> findById(Long id) {
+		return projRepo.findById(id);
+	}
+	
 	public List<ChartData> getProjectStatus() {
 		
 		return projRepo.getProjectStatus();
+	}
+	
+	public void deleteById(Long id) {
+		projRepo.deleteById(id);
 	}
 }

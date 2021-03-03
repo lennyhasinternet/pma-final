@@ -31,6 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 					"from user_accounts where username=?")
 			.dataSource(dataSource)
 			.passwordEncoder(bCryptEncoder);
+		
 	}
 	
 	@Override
@@ -43,7 +44,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.antMatchers("/employees/save").hasRole("ADMIN")
 			.antMatchers("/", "/**").permitAll()
 			.and()
-			.formLogin();		
-	}
-	
+			.formLogin();
+		
+		http.csrf().disable();
+	}	
+
 }
