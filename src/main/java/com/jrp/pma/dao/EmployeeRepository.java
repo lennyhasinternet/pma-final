@@ -32,4 +32,7 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 	public Page<Employee> findAll(Pageable pageable);
 	
 	public Employee findByEmail(String value);
+
+	public Employee findByEmployeeId(Long id);
+	
 }

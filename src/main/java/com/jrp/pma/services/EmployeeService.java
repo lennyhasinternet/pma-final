@@ -44,4 +44,12 @@ public class EmployeeService {
 	public Page<Employee> findAll(Pageable pageable) {
 		return empRepo.findAll(pageable);
 	}
+
+	public Employee findByEmployeeId(Long id) {
+		return empRepo.findByEmployeeId(id);
+	}
+	
+	public void delete(Employee employee) {
+		empRepo.delete(employee);
+	}
 }
