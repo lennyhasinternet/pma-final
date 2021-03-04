@@ -3,6 +3,8 @@ package com.jrp.pma.dao;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -24,6 +26,8 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
 			+ "COUNT(pe.employee_id) as projectCount FROM employee e LEFT JOIN project_employee pe "
 			+ "ON pe.employee_id=e.employee_id GROUP BY e.first_name, e.last_name ORDER BY 3 DESC")  
 	public List<EmployeeProject> employeeProjects();
+	
+	public Page<Employee> findAll(Pageable pageable);
 	
 	public Employee findByEmail(String value);
 }

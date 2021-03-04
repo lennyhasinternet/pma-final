@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.jrp.pma.dao.EmployeeRepository;
 import com.jrp.pma.dto.EmployeeProject;
@@ -37,5 +39,9 @@ public class EmployeeService {
 	
 	public Employee findByEmail(String value) {
 		return empRepo.findByEmail(value);
+	}
+	
+	public Page<Employee> findAll(Pageable pageable) {
+		return empRepo.findAll(pageable);
 	}
 }
