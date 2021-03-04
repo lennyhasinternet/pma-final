@@ -2,7 +2,6 @@ package com.jrp.pma.entities;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -25,10 +25,14 @@ public class Project {
     allocationSize = 1,initialValue=1)
 	private long projectId;
 	
+	@NotNull
+	@Size(min=2, max=50)
 	private String name;
 	private String stage;
-	private String description;
 	
+	@NotNull
+	@Size(min=2, max=50)
+	private String description;
 	
 	@ManyToMany(cascade= {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, 
 			fetch=FetchType.LAZY)

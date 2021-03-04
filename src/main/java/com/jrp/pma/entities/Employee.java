@@ -3,6 +3,7 @@ package com.jrp.pma.entities;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,8 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jrp.pma.validators.UniqueValue;
 
 @Entity
 public class Employee {
@@ -24,8 +28,17 @@ public class Employee {
     allocationSize = 1,initialValue=1)
 	private long employeeId;
 	
+	@NotNull
+	@Size(min=2, max=50)
 	private String firstName;
+	
+	@NotNull
+	@Size(min=2, max=50)
 	private String lastName;
+	
+	@NotNull
+	@Email
+	@UniqueValue
 	private String email;
 	
 	
