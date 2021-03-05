@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -25,12 +25,12 @@ public class Project {
     allocationSize = 1,initialValue=1)
 	private long projectId;
 	
-	@NotNull
+	@NotBlank
 	@Size(min=2, max=50)
 	private String name;
 	private String stage;
 	
-	@NotNull
+	@NotBlank
 	@Size(min=2, max=50)
 	private String description;
 	

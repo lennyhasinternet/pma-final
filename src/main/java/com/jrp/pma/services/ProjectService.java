@@ -38,4 +38,12 @@ public class ProjectService {
 	public void deleteById(Long id) {
 		projRepo.deleteById(id);
 	}
+	
+	public void delete(Project project) {
+		projRepo.delete(project);
+	}
+	
+	public Project findByProjectId(Long id) {
+		return projRepo.findByProjectId(id);
+	}
 }
